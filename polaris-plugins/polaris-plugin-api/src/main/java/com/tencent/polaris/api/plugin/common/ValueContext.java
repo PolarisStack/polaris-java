@@ -18,9 +18,10 @@
 package com.tencent.polaris.api.plugin.common;
 
 import com.tencent.polaris.logging.LoggerFactory;
+import org.slf4j.Logger;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import org.slf4j.Logger;
 
 /**
  * 用于主流程传递kv数据的上下文对象，线程安全
@@ -34,6 +35,8 @@ public class ValueContext {
     private static final String KEY_HOST = "key_host";
 
     private static final String KEY_CLIENT_ID = "key_clientId";
+
+    private static final String KEY_INSTANCE_ID = "key_instanceId";
 
     private static final String KEY_ENGINE = "key_engine";
 
@@ -94,6 +97,14 @@ public class ValueContext {
 
     public void setClientId(String clientId) {
         setValue(KEY_CLIENT_ID, clientId);
+    }
+
+    public String getInstanceId() {
+        return getValue(KEY_INSTANCE_ID);
+    }
+
+    public void setInstanceId(String instanceId) {
+        setValue(KEY_INSTANCE_ID, instanceId);
     }
 
     public String getServerConnectorProtocol() {
